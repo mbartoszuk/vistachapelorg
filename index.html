@@ -11,6 +11,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vista Chapel</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/dd8d14c1af.js" crossorigin="anonymous"></script>
   <style>
     @keyframes imageAnimation { 
         0% { opacity: 0; animation-timing-function: ease-in; }
@@ -45,6 +47,7 @@
     .header-hash {
         position: relative;
         background-color: rgba(0, 0, 0, 0.4);
+        font-family: 'Architects Daughter', 'Helvetica', sans-serif;
     }
     .donate-button {
         position: relative;
@@ -95,18 +98,67 @@
         background-image: url(chapel.jpeg);
         animation-delay: 10s; 
     }
+    .social-link {
+        z-index: 2;
+        color: #a9a9a9;
+        font-size: 40pt;
+        transition: 0.3s;
+    }
+    .fb-link {
+        position: absolute;
+        right: 80px;
+        top: 20px;
+    }
+    .fb-link:hover {
+      color: #4267B2;
+    }
+    .insta-link {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+    .insta-link:hover {
+      color: #f09433;
+    }
+    .insta-link:hover i::before {
+      transition: 0.3s;
+      background: #f09433; 
+      background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+      background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+      background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   </style>
 </head>
 <body>
-  <ul class="cb-slideshow">
+  <header>
+    <ul class="cb-slideshow">
     <li>
-      <span></span>
+    <span></span>
     </li>
     <li>
-      <span></span>
+    <span></span>
     </li>
-  </ul>
-  <h1 class="header"><span class="header-hash">&nbsp;#vistachapel&nbsp;</span></h1>
-  <a class="donate-button" href="https://www.vistaretreat.org/donate">Donate</a>
+    </ul>
+    <h1 class="header"><span class="header-hash">&nbsp;#VistaChapel&nbsp;</span></h1>
+    <a class="donate-button" href="https://www.vistaretreat.org/donate">Donate</a>
+    <a href="https://www.facebook.com/CampVistaChapel/" class="social-link fb-link">
+      <i class="fab fa-facebook-square" aria-hidden="true"></i>
+    </a>
+    <svg width="0" height="0">
+      <radialGradient id="rg" r="150%" cx="30%" cy="107%">
+        <stop stop-color="#fdf497" offset="0" />
+        <stop stop-color="#fdf497" offset="0.05" />
+        <stop stop-color="#fd5949" offset="0.45" />
+        <stop stop-color="#d6249f" offset="0.6" />
+        <stop stop-color="#285AEB" offset="0.9" />
+      </radialGradient>
+    </svg>
+    <a href="https://www.instagram.com/camp_vista_chapel/" class="social-link insta-link">
+      <i class="fab fa-instagram-square" aria-hidden="true"></i>
+    </a>
+  </header>
 </body>
 </html>
