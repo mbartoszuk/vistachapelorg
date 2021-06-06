@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vista Chapel</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
@@ -21,50 +21,52 @@
         60% { opacity: 0 }
         100% { opacity: 0 }
     }
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      position: fixed;
+      width: 100%;
+      margin: 0;
+      overflow-x: hidden;
+      background-color: #242424;
+      font-family: 'Helvetica', sans-serif;
+    }
     .no-cssanimations .cb-slideshow li span{
       opacity: 1;
     }
-    body {
-        background-color: #242424;
-        font-family: 'Helvetica', sans-serif;
-        width: 100vw;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        background-size: cover;
-        background-position: center bottom;
-        background-repeat: no-repeat;
+    .header-title {
+      font-size: 40pt;
+      margin: 0 auto;
+      width: fit-content;
+      padding-top: calc( 50vh - 40pt );
+      color: #efefef;
+      z-index: 100;
     }
-    .header {
-        font-size: 40pt;
-        margin: 0 auto;
-        width: fit-content;
-        padding: 60px;
-        padding-top: calc( 50vh - 40pt );
-        color: #efefef;
-        z-index: 100;
-    }
-    .header-hash {
-        position: relative;
-        background-color: rgba(0, 0, 0, 0.4);
-        font-family: 'Architects Daughter', 'Helvetica', sans-serif;
+    .header-title-text {
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.4);
+      font-family: 'Architects Daughter', 'Helvetica', sans-serif;
     }
     .donate-button {
-        position: relative;
-        display: block;
-        margin: 0 auto;
-        border: none;
-        width: fit-content;
-        text-align: center;
-        margin-top: 40px;
-        padding: 30px;
-        background-color: #bf360c;
-        color: #efefef;
-        font-size: 16pt;
-        text-decoration: none;
-        text-transform: uppercase;
-        z-index: 100;
-        font-weight: bold;
+      position: relative;
+      display: block;
+      margin: 40px auto 0 auto;
+      border: none;
+      width: fit-content;
+      text-align: center;
+      padding: 30px;
+      background-color: #bf360c;
+      color: #efefef;
+      font-size: 16pt;
+      text-decoration: none;
+      text-transform: uppercase;
+      z-index: 100;
+      font-weight: bold;
     }
     .cb-slideshow { 
         position: fixed;
@@ -133,16 +135,18 @@
   </style>
 </head>
 <body>
-  <header>
+  <header class="landing-header">
     <ul class="cb-slideshow">
-    <li>
-    <span></span>
-    </li>
-    <li>
-    <span></span>
-    </li>
+      <li>
+        <span></span>
+      </li>
+      <li>
+        <span></span>
+      </li>
     </ul>
-    <h1 class="header"><span class="header-hash">&nbsp;#VistaChapel&nbsp;</span></h1>
+    <h1 class="header-title">
+      <span class="header-title-text">&nbsp;#VistaChapel&nbsp;</span>
+    </h1>
     <a class="donate-button" href="https://www.vistaretreat.org/donate">Donate</a>
     <a href="https://www.facebook.com/CampVistaChapel/" class="social-link fb-link">
       <i class="fab fa-facebook-square" aria-hidden="true"></i>
