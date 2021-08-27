@@ -189,6 +189,198 @@
       <i class="fab fa-instagram-square" aria-hidden="true"></i>
     </a>
   </header>
+  <section class="opening">
+    <h1 class="header-spacer">10/3/2021 Grand Opening</h1>
+<form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSevBzpG0alsNd4us-YCkJE6hcc2TPOv9H83rpqnaqgiWCkURw/formResponse" method="post">
+  <p>
+    <label for="entry.105952682">Number of adults (18+)</label>
+    <select name"entry.105952682">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+  </p>
+  <p>
+    <label for="emailAddress">E-mail address</label>
+    <input type="text" name="emailAddress">
+  </p>
+  <p>
+    <label for="entry.1206048510">Covid restrictions</label>
+    <select name"entry.1206048510">
+      <option value="Yes">Yes</option>
+    </select>
+  </p>
+  <p>
+    <label for="entry.1837584723">Wspólnota</label>
+    <select name"entry.1837584723">
+      <option value="WMK">WMK</option>
+      <option value="DK">DK</option>
+      <option value="None">None</option>
+      <option value=""></option>
+    </select>
+  </p>
+  <p>
+    <label for="entry.357106956">Last name</label>
+    <input type="text" name="entry.357106956">
+  </p>
+  <p>
+    <label for="entry.438949173">Cell phone number</label>
+    <input type="text" name="entry.438949173">
+  </p>
+  <p>
+    <label for="entry.1999622932">First name</label>
+    <input type="text" name="entry.1999622932">
+  </p>
+  <p>
+    <label for="entry.2009945624">Number of children (under 18)</label>
+    <select name"entry.2009945624">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+  </p>
+  <input type="hidden" name="emailReceipt" value="true">
+  <input type="hidden" name="entry.1681251381" value="TODO">
+  <input type="submit" value="Submit">
+</form>
+    <div id="smart-button-container">
+      <div style="text-align: center">
+        <label for="description"> </label>
+        <input type="text" name="descriptionInput" id="description" maxlength="127" value="">
+      </div>
+      <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>
+      <div style="text-align: center">
+        <label for="amount"> </label>
+        <input name="amountInput" type="number" id="amount" value="" >
+        <span> USD</span>
+      </div>
+      <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
+      <div id="invoiceidDiv" style="text-align: center; display: none;">
+        <label for="invoiceid"> </label>
+        <input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="" >
+      </div>
+      <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
+      <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+    </div>
+    <script src="https://www.paypal.com/sdk/js?client-id=ASTJ3pcXqyWPJ3iRmMn1LQ40YP_ngqon6TO3o1QvAYOoohJbeBatjiV-izjIi0HohMzaWU4AmGoxppCC&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+    <script>
+    function initPayPalButton() {
+      var description = document.querySelector('#smart-button-container #description');
+      var amount = document.querySelector('#smart-button-container #amount');
+      var descriptionError = document.querySelector('#smart-button-container #descriptionError');
+      var priceError = document.querySelector('#smart-button-container #priceLabelError');
+      var invoiceid = document.querySelector('#smart-button-container #invoiceid');
+      var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
+      var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
+
+      var elArr = [description, amount];
+
+      if (invoiceidDiv.firstChild.innerHTML.length > 1) {
+        invoiceidDiv.style.display = "block";
+      }
+
+      var purchase_units = [];
+      purchase_units[0] = {};
+      purchase_units[0].amount = {};
+
+      function validate(event) {
+        return event.value.length > 0;
+      }
+
+      paypal.Buttons({
+        style: {
+          color: 'gold',
+          shape: 'rect',
+          label: 'paypal',
+          layout: 'vertical',
+
+        },
+
+        onInit: function (data, actions) {
+          actions.disable();
+
+          if(invoiceidDiv.style.display === "block") {
+            elArr.push(invoiceid);
+          }
+
+          elArr.forEach(function (item) {
+            item.addEventListener('keyup', function (event) {
+              var result = elArr.every(validate);
+              if (result) {
+                actions.enable();
+              } else {
+                actions.disable();
+              }
+            });
+          });
+        },
+
+        onClick: function () {
+          if (description.value.length < 1) {
+            descriptionError.style.visibility = "visible";
+          } else {
+            descriptionError.style.visibility = "hidden";
+          }
+
+          if (amount.value.length < 1) {
+            priceError.style.visibility = "visible";
+          } else {
+            priceError.style.visibility = "hidden";
+          }
+
+          if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
+            invoiceidError.style.visibility = "visible";
+          } else {
+            invoiceidError.style.visibility = "hidden";
+          }
+
+          purchase_units[0].description = description.value;
+          purchase_units[0].amount.value = amount.value;
+
+          if(invoiceid.value !== '') {
+            purchase_units[0].invoice_id = invoiceid.value;
+          }
+        },
+
+        createOrder: function (data, actions) {
+          return actions.order.create({
+            purchase_units: purchase_units,
+          });
+        },
+
+        onApprove: function (data, actions) {
+          return actions.order.capture().then(function (orderData) {
+
+            // Full available details
+            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+            // Show a success message within this page, e.g.
+            const element = document.getElementById('paypal-button-container');
+            element.innerHTML = '';
+            element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+            // Or go to another URL:  actions.redirect('thank_you.html');
+
+          });
+        },
+
+        onError: function (err) {
+          console.log(err);
+        }
+      }).render('#paypal-button-container');
+    }
+    initPayPalButton();
+    </script>
+  </section>
   <section class="timeline">
     <h1 class="header-spacer">History</h1>
     <ul class="timeline-list">
